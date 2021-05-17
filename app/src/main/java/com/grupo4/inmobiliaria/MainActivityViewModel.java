@@ -1,5 +1,12 @@
 package com.grupo4.inmobiliaria;
 
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -7,9 +14,19 @@ import androidx.lifecycle.ViewModel;
 import com.grupo4.inmobiliaria.modelo.Propietario;
 import com.grupo4.inmobiliaria.request.ApiClient;
 
-public class MainActivityViewModel extends ViewModel {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class MainActivityViewModel extends AndroidViewModel {
     private MutableLiveData<String> mensajeMutable;
     private MutableLiveData<Boolean> resultadoMutable;
+    private Context context;
+
+    public MainActivityViewModel (@NonNull Application application) {
+        super(application);
+        context = application.getApplicationContext();
+    }
 
     public LiveData<String> getMensajeMutable(){
         if (mensajeMutable == null)
@@ -25,14 +42,32 @@ public class MainActivityViewModel extends ViewModel {
 
     public void verificarDatos(String mail, String clave){
         if (mail != null && clave != null && clave.length() > 0 && mail.length() > 0){
-            ApiClient api = ApiClient.getApi();
-            Propietario propietario = api.login(mail, clave);
 
-            if (propietario == null){
-                mensajeMutable.setValue("Credenciales incorrectas");
-            } else {
-                resultadoMutable.setValue(true);
-            }
+            Call<String> respuestaToken = ApiClient.getMyApiClient().Login(mail, clave);
+            respuestaToken.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse (Call<String> call, Response<String> response) {
+                    if(response.isSuccessful()){
+                        Log.d("Token", response.body());
+
+                        SharedPreferences sharedPreferences = context.getSharedPreferences("data.dat", 0);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("token", "Bearer" + response.body());
+                        editor.commit();
+
+                        resultadoMutable.setValue(true);
+
+                    }else{
+                        mensajeMutable.setValue("Usuario y/o Clave Incorrecta");
+                    }
+                }
+
+                @Override
+                public void onFailure (Call<String> call, Throwable t) {
+                    Log.d("Token", "Salida Error" + t.getMessage());
+                }
+            });
+
         } else {
             mensajeMutable.setValue("Datos insuficientes");
         }

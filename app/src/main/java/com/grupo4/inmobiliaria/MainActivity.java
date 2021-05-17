@@ -66,9 +66,7 @@ public class MainActivity extends AppCompatActivity {
         viewModel.getResultadoMutable().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean ok) {
-                if (ok){
                     startActivity(new Intent(getApplicationContext(), MenuNavegacion.class));
-                }
             }
         });
     }

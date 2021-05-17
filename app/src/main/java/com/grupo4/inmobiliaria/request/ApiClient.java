@@ -1,8 +1,19 @@
 package com.grupo4.inmobiliaria.request;
 
+import android.util.Log;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.grupo4.inmobiliaria.modelo.*;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.POST;
 
 
 public class ApiClient {
@@ -27,9 +38,6 @@ public class ApiClient {
 
     }
 
-
-
-
     //Servicios
     //Para que pueda iniciar sesion
     public Propietario login(String mail, final String password){
@@ -41,7 +49,6 @@ public class ApiClient {
         }
         return null;
     }
-
 
     //Retorna el usuario que inició Sesión
     public Propietario obtenerUsuarioActual(){
@@ -155,9 +162,34 @@ public class ApiClient {
         pagos.add(new Pago(900,1,uno,17000,"10/02/2020"));
         pagos.add(new Pago(901,2,uno,17000,"10/03/2020"));
         pagos.add(new Pago(902,3,uno,17000,"10/04/2020"));
-
-
-
-
     }
+
+
+    private static final String PATH = "http://192.168.1.106:45455/api/";
+    private static MyApiInterface myApiInterface;
+
+    public static MyApiInterface getMyApiClient(){
+        Gson gson = new GsonBuilder().setLenient().create();
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(PATH)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        myApiInterface = retrofit.create(MyApiInterface.class);
+        Log.d("Salida", retrofit.baseUrl().toString());
+
+        return myApiInterface;
+    }
+
+    public interface MyApiInterface {
+        @FormUrlEncoded
+        @POST("")
+        Call<String> Login (@Field("Usuario")String usuario, @Field("Clave")String clave);
+    }
+
+
+
+
 }
+
+
