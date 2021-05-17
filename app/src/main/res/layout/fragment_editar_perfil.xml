@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.ui.perfil.EditarPerfilFragment">
+
+    <View
+        style="@style/Divisor"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btGuardar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        style="@style/Divisor"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvNombre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Guardar cambios"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditarTelefonoUsuario" />
+
+    <EditText
+        android:id="@+id/etEditarDniUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:imeOptions="actionDone"
+        android:text="00.000.000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDni" />
+
+    <EditText
+        android:id="@+id/etEditarNombreUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nombre..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+
+    <EditText
+        android:id="@+id/etEditarApellidoUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Apellido..."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvApellido" />
+
+    <EditText
+        android:id="@+id/etEditarTelefonoUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTelefono" />
+
+    <EditText
+        android:id="@+id/etEditarEmailUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionDone"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvMail" />
+
+    <TextView
+        android:id="@+id/tvUsuarioId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textSize="24dp"
+        android:text="Editando el usuario #ID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:gravity="left"
+        android:text="Nombre"
+        app:layout_constraintStart_toStartOf="@+id/etEditarNombreUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/tvUsuarioId" />
+
+    <TextView
+        android:id="@+id/tvApellido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Apellido"
+        app:layout_constraintStart_toStartOf="@+id/etEditarApellidoUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/etEditarNombreUsuario" />
+
+    <TextView
+        android:id="@+id/tvDni"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="DNI"
+        app:layout_constraintStart_toStartOf="@+id/etEditarDniUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/etEditarApellidoUsuario" />
+
+    <TextView
+        android:id="@+id/tvMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="E-Mail"
+        app:layout_constraintStart_toStartOf="@+id/etEditarEmailUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/etEditarDniUsuario" />
+
+    <TextView
+        android:id="@+id/tvTelefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Teléfono"
+        app:layout_constraintStart_toStartOf="@+id/etEditarTelefonoUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/etEditarEmailUsuario" />
+</androidx.constraintlayout.widget.ConstraintLayout>
