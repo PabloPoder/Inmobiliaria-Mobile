@@ -42,6 +42,7 @@ public class EditarPerfilFragment extends Fragment {
     public EditText etEditarDniUsuario;
     public EditText etEditarEmailUsuario;
     public EditText etEditarTelefonoUsuario;
+    public EditText etEditarClave;
     public Button btGuardar;
     private Propietario propietarioActual;
 
@@ -78,6 +79,7 @@ public class EditarPerfilFragment extends Fragment {
                 etEditarDniUsuario.setText(String.valueOf(propietario.getDni()));
                 etEditarEmailUsuario.setText((propietario.getEmail()));
                 etEditarTelefonoUsuario.setText(propietario.getTelefono());
+                etEditarClave.setText(propietario.getClave());
             }
         });
         editarPerfilViewModel.ObtenerPropietario();
@@ -92,6 +94,7 @@ public class EditarPerfilFragment extends Fragment {
         etEditarDniUsuario = v.findViewById(R.id.etEditarDniUsuario);
         etEditarEmailUsuario = v.findViewById(R.id.etEditarEmailUsuario);
         etEditarTelefonoUsuario = v.findViewById(R.id.etEditarTelefonoUsuario);
+        etEditarClave = v.findViewById(R.id.etEditarClave);
         btGuardar = v.findViewById(R.id.btGuardar);
 
         btGuardar.setOnClickListener(new View.OnClickListener() {
@@ -101,9 +104,10 @@ public class EditarPerfilFragment extends Fragment {
 
                 p.setNombre(etEditarNombreUsuario.getText().toString());
                 p.setApellido(etEditarApellidoUsuario.getText().toString());
-                p.setDni(TextUtils.isEmpty(etEditarDniUsuario.getText())? -1 : Long.parseLong(etEditarDniUsuario.getText().toString()));
+                p.setDni(etEditarDniUsuario.getText().toString());
                 p.setEmail(etEditarEmailUsuario.getText().toString());
                 p.setTelefono(etEditarTelefonoUsuario.getText().toString());
+                p.setClave(etEditarClave.getText().toString());
 
                 editarPerfilViewModel.ModificarPropietario(p);
             }

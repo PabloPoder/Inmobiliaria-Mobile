@@ -2,22 +2,21 @@ package com.grupo4.inmobiliaria.modelo;
 
 public class LoginView {
 
-    private String Usuario;
-    private String Clave;
+    private String usuario;
+    private String clave;
 
-    public String getUsuario () {
-        return Usuario;
+    public LoginView(String usuario, String clave){
+        this.usuario = usuario;
+        this.clave = clave;
     }
 
-    public void setUsuario (String usuario) {
-        Usuario = usuario;
-    }
+    public String getUsuario(){return usuario;}
 
-    public String getClave () {
-        return Clave;
-    }
+    public void SetUsuario(String usuario){this.usuario = usuario;}
 
-    public void setClave (String clave) {
-        Clave = clave;
-    }
+    public String getClave(){return clave;}
+
+    public void SetClave(String clave){this.clave = clave;}
+
+
 }

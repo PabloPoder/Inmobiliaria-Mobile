@@ -57,17 +57,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tvNombreCompletoInquilino" />
 
     <TextView
-        android:id="@+id/tvTrabajoInquilino"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Lugar de trabajo"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDniInquilino" />
-
-    <TextView
         android:id="@+id/tvEmailInquilino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,7 +65,7 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTrabajoInquilino" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDniInquilino" />
 
     <TextView
         android:id="@+id/tvTelefonoInquilino"
@@ -87,40 +76,12 @@
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmailInquilino" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEmailInquilino" /><![CDATA[
 
-    <TextView
-        android:id="@+id/tvNombreCompletoGarante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Garante"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
-    <TextView
-        android:id="@+id/tvTelefonoGarante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Telefono garante"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombreCompletoGarante" />
 
-    <TextView
-        android:id="@+id/textView18"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Datos del garante"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view3" />
     tools:layout_editor_absoluteY="216dp" />
 
+
+]]>
 </androidx.constraintlayout.widget.ConstraintLayout>

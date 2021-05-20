@@ -1,7 +1,12 @@
 package com.grupo4.inmobiliaria.ui.ui.perfil;
 
+import android.app.Application;
+import android.content.Context;
 import android.util.Patterns;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -9,9 +14,20 @@ import androidx.lifecycle.ViewModel;
 import com.grupo4.inmobiliaria.modelo.Propietario;
 import com.grupo4.inmobiliaria.request.ApiClient;
 
-public class EditarPerfilViewModel extends ViewModel {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class EditarPerfilViewModel extends AndroidViewModel {
+
     public MutableLiveData<Propietario> propietarioMutable;
     public MutableLiveData<String> errorMutable;
+    private Context context;
+
+    public EditarPerfilViewModel (@NonNull Application application) {
+        super(application);
+        context = application.getApplicationContext();
+    }
 
     public LiveData<Propietario> getPropietarioMutable(){
         if (propietarioMutable == null){
@@ -28,14 +44,26 @@ public class EditarPerfilViewModel extends ViewModel {
     }
 
     public void ObtenerPropietario(){
-        ApiClient api = ApiClient.getApi();
-        Propietario p = api.obtenerUsuarioActual();
+        String token = ApiClient.getToken(context);
+        Call<Propietario> p = ApiClient.getMyApiClient().PropietarioActual(token);
+        p.enqueue(new Callback<Propietario>() {
+            @Override
+            public void onResponse (Call<Propietario> call, Response<Propietario> response) {
+                if(response.isSuccessful())
+                    propietarioMutable.postValue(response.body());
+                else
+                    errorMutable.setValue("Error al cargar el perfil");
+            }
 
-        propietarioMutable.setValue(p);
+            @Override
+            public void onFailure (Call<Propietario> call, Throwable t) {
+                errorMutable.setValue("Error al cargar el perfil");
+            }
+        });
     }
 
     public void ModificarPropietario(Propietario p){
-        if(p.getNombre().isEmpty() || p.getApellido().isEmpty() || p.getDni() == -1 || p.getEmail().isEmpty() || p.getTelefono().isEmpty()){
+        if(p.getNombre().isEmpty() || p.getApellido().isEmpty() || p.getDni().isEmpty() || p.getEmail().isEmpty() || p.getTelefono().isEmpty()){
             errorMutable.setValue("Los campos no pueden estar vacios.");
         }else if(p.getDni().toString().length() != 8){
             errorMutable.setValue("El DNI ingresado no es válido (8 dígitos necesarios)");

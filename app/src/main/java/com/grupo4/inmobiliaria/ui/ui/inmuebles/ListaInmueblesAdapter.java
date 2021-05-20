@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
@@ -50,7 +51,11 @@ public class ListaInmueblesAdapter extends ArrayAdapter<Inmueble> {
 
         tvDireccion.setText(inmueble.getDireccion());
         tvPrecio.setText("$"+inmueble.getPrecio());
-        Glide.with(getContext()).load(inmueble.getImagen()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivFoto);
+        Glide.with(getContext())
+                .load("http://192.168.1.106:45455" + inmueble.getFoto())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(ivFoto);
+                //.placeholder(@Drawable.) imagen defecto
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

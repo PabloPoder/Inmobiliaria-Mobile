@@ -7,12 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".ui.ui.perfil.EditarPerfilFragment">
 
-    <View
-        style="@style/Divisor"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/btGuardar"
+    <Button
+        android:id="@+id/btGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Guardar cambios"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEditarClave" />
 
     <View
         style="@style/Divisor"
@@ -21,23 +24,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/btGuardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Guardar cambios"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etEditarTelefonoUsuario" />
-
     <EditText
         android:id="@+id/etEditarDniUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
         android:imeOptions="actionDone"
+        android:inputType="number"
         android:text="00.000.000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,8 +40,8 @@
         android:id="@+id/etEditarNombreUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:imeOptions="actionDone"
         android:ems="10"
+        android:imeOptions="actionDone"
         android:inputType="textPersonName"
         android:text="Nombre..."
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,8 +52,8 @@
         android:id="@+id/etEditarApellidoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:imeOptions="actionDone"
         android:ems="10"
+        android:imeOptions="actionDone"
         android:inputType="textPersonName"
         android:text="Apellido..."
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,8 +64,8 @@
         android:id="@+id/etEditarTelefonoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:imeOptions="actionDone"
         android:ems="10"
+        android:imeOptions="actionDone"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,20 +75,32 @@
         android:id="@+id/etEditarEmailUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:imeOptions="actionDone"
         android:ems="10"
+        android:imeOptions="actionDone"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvMail" />
+
+    <EditText
+        android:id="@+id/etEditarClave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:imeOptions="actionDone"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:password="true"
+        app:layout_constraintTop_toBottomOf="@+id/tvEditarClave" />
 
     <TextView
         android:id="@+id/tvUsuarioId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:textSize="24dp"
         android:text="Editando el usuario #ID"
+        android:textSize="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -136,6 +141,15 @@
         android:text="E-Mail"
         app:layout_constraintStart_toStartOf="@+id/etEditarEmailUsuario"
         app:layout_constraintTop_toBottomOf="@+id/etEditarDniUsuario" />
+
+    <TextView
+        android:id="@+id/tvEditarClave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Contraseña"
+        app:layout_constraintTop_toBottomOf="@+id/etEditarTelefonoUsuario"
+        tools:layout_editor_absoluteX="101dp" />
 
     <TextView
         android:id="@+id/tvTelefono"

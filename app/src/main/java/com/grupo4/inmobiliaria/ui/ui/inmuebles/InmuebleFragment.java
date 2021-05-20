@@ -1,7 +1,5 @@
 package com.grupo4.inmobiliaria.ui.ui.inmuebles;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,12 +20,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.grupo4.inmobiliaria.R;
 import com.grupo4.inmobiliaria.modelo.Inmueble;
-import com.grupo4.inmobiliaria.request.ApiClient;
 
 public class InmuebleFragment extends Fragment {
 
     private InmuebleViewModel inmuebleViewModel;
-    private TextView tvDireccion2, tvPrecio2, tvTipo, tvUso, tvAmbientes, tvInmuebleId;
+
+    private TextView tvDireccion2, tvPrecio2, tvSuperficie, tvAmbientes, tvLatitud, tvLongitud, tvInmuebleId;
     private ImageView ivFoto2;
     private Button btContratoInmueble;
     private Switch swEstado;
@@ -49,11 +47,15 @@ public class InmuebleFragment extends Fragment {
                 inmueble = i;
                 tvDireccion2.setText("Dirección: "+inmueble.getDireccion());
                 tvPrecio2.setText("Precio por mes: $"+inmueble.getPrecio());
-                tvTipo.setText("Tipo: "+inmueble.getTipo());
-                tvUso.setText("Uso: "+inmueble.getUso());
+                tvSuperficie.setText("Superficie: " + inmueble.getSuperficie());
                 tvAmbientes.setText("Ambientes: "+inmueble.getAmbientes());
-                tvInmuebleId.setText("Detalles del inmueble #"+inmueble.getIdInmueble());
-                Glide.with(getContext()).load(inmueble.getImagen()).diskCacheStrategy(DiskCacheStrategy.ALL).into(ivFoto2);
+                tvLatitud.setText("Latitud: " + inmueble.getLatitud());
+                tvLongitud.setText("Longitud: " + inmueble.getLongitud());
+                tvInmuebleId.setText("Detalles del inmueble #"+inmueble.getId());
+                Glide.with(getContext())
+                        .load("http://192.168.1.100:45455" + inmueble.getFoto())
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(ivFoto2);
 
                 swEstado.setChecked(inmueble.isEstado());
                 swEstado.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -94,9 +96,10 @@ public class InmuebleFragment extends Fragment {
     private void InicializarVista(View root){
         tvDireccion2 = root.findViewById(R.id.tvDireccion2);
         tvPrecio2 = root.findViewById(R.id.tvPrecio2);
-        tvTipo = root.findViewById(R.id.tvTipo);
-        tvUso = root.findViewById(R.id.tvUso);
-        tvAmbientes = root.findViewById(R.id.tvAmbientes);
+        tvSuperficie = root.findViewById(R.id.tvSuperficie);
+        tvLatitud = root.findViewById(R.id.tvLatitud);
+        tvLongitud = root.findViewById(R.id.tvLongitud);
+        tvAmbientes = root.findViewById(R.id.tvLongitud);
         ivFoto2 = root.findViewById(R.id.ivFoto2);
         swEstado = root.findViewById(R.id.swEstado);
         btContratoInmueble = root.findViewById(R.id.btContratoInmueble);

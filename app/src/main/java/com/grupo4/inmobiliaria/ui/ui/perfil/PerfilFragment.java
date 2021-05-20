@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ public class PerfilFragment extends Fragment {
     public TextView tvUserDni;
     public TextView tvUserEmail;
     public TextView tvUserPhone;
+    public TextView tvClave;
     public Button btEditar;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,8 +42,9 @@ public class PerfilFragment extends Fragment {
                 tvUserId.setText("Usuario #"+propietario.getId());
                 tvUserFullname.setText("Nombre: "+propietario.getApellido()+" "+propietario.getNombre());
                 tvUserDni.setText("DNI: "+propietario.getDni());
-                tvUserEmail.setText("E-Mail: "+propietario.getEmail());
                 tvUserPhone.setText("Teléfono: "+propietario.getTelefono());
+                tvUserEmail.setText("E-Mail: "+propietario.getEmail());
+                tvClave.setText("Clave: " + propietario.getClave());
             }
         });
         perfilViewModel.LeerPropietario();
@@ -55,6 +58,7 @@ public class PerfilFragment extends Fragment {
         tvUserDni = v.findViewById(R.id.tvUserDni);
         tvUserEmail = v.findViewById(R.id.tvUserEmail);
         tvUserPhone = v.findViewById(R.id.tvUserPhone);
+        tvClave = v.findViewById(R.id.tvClave);
         btEditar = v.findViewById(R.id.btEditar);
         btEditar.setOnClickListener(new View.OnClickListener() {
             @Override
