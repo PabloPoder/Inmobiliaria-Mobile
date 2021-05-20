@@ -52,7 +52,7 @@ public class ListaInmueblesAdapter extends ArrayAdapter<Inmueble> {
         tvDireccion.setText(inmueble.getDireccion());
         tvPrecio.setText("$"+inmueble.getPrecio());
         Glide.with(getContext())
-                .load("http://192.168.1.106:45455" + inmueble.getFoto())
+                .load("http://192.168.1.105:45455/" + inmueble.getFoto())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(ivFoto);
                 //.placeholder(@Drawable.) imagen defecto

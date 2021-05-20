@@ -53,7 +53,7 @@ public class InmuebleFragment extends Fragment {
                 tvLongitud.setText("Longitud: " + inmueble.getLongitud());
                 tvInmuebleId.setText("Detalles del inmueble #"+inmueble.getId());
                 Glide.with(getContext())
-                        .load("http://192.168.1.100:45455" + inmueble.getFoto())
+                        .load("http://192.168.1.105:45455/" + inmueble.getFoto())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(ivFoto2);
 
