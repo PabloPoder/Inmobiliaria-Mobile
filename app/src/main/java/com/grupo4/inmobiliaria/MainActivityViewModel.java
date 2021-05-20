@@ -52,7 +52,7 @@ public class MainActivityViewModel extends AndroidViewModel {
 
                         SharedPreferences sharedPreferences = context.getSharedPreferences("token.dat", 0);
                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                        editor.putString("token", "Bearer" + response.body());
+                        editor.putString("token", "Bearer " + response.body());
                         editor.commit();
 
                         resultadoMutable.setValue(true);

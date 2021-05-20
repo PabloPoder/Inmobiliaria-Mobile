@@ -148,8 +148,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="Contraseña"
-        app:layout_constraintTop_toBottomOf="@+id/etEditarTelefonoUsuario"
-        tools:layout_editor_absoluteX="101dp" />
+        app:layout_constraintStart_toStartOf="@+id/etEditarClave"
+        app:layout_constraintTop_toBottomOf="@+id/etEditarTelefonoUsuario" />
 
     <TextView
         android:id="@+id/tvTelefono"

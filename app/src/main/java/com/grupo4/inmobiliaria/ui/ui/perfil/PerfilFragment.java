@@ -27,7 +27,7 @@ public class PerfilFragment extends Fragment {
     public TextView tvUserDni;
     public TextView tvUserEmail;
     public TextView tvUserPhone;
-    public TextView tvClave;
+    // public TextView tvClave;
     public Button btEditar;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class PerfilFragment extends Fragment {
                 tvUserDni.setText("DNI: "+propietario.getDni());
                 tvUserPhone.setText("Teléfono: "+propietario.getTelefono());
                 tvUserEmail.setText("E-Mail: "+propietario.getEmail());
-                tvClave.setText("Clave: " + propietario.getClave());
+                // tvClave.setText("Clave: " + propietario.getClave());
             }
         });
         perfilViewModel.LeerPropietario();
@@ -58,7 +58,7 @@ public class PerfilFragment extends Fragment {
         tvUserDni = v.findViewById(R.id.tvUserDni);
         tvUserEmail = v.findViewById(R.id.tvUserEmail);
         tvUserPhone = v.findViewById(R.id.tvUserPhone);
-        tvClave = v.findViewById(R.id.tvClave);
+        // tvClave = v.findViewById(R.id.tvClave);
         btEditar = v.findViewById(R.id.btEditar);
         btEditar.setOnClickListener(new View.OnClickListener() {
             @Override

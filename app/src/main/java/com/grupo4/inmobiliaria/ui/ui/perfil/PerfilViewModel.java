@@ -42,6 +42,7 @@ public class PerfilViewModel extends AndroidViewModel {
 
         String token = ApiClient.getToken(context);
         Call<Propietario> p = ApiClient.getMyApiClient().PropietarioActual(token);
+        Log.d("Token" , token);
         p.enqueue(new Callback<Propietario>() {
             @Override
             public void onResponse (Call<Propietario> call, Response<Propietario> response) {
