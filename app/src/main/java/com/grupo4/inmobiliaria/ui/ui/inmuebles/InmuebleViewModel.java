@@ -36,17 +36,17 @@ public class InmuebleViewModel extends ViewModel {
         inmuebleMutable.setValue(inmueble);
     }
 
-    public void CambioEstado(Inmueble inmueble){
-        inmueble.setEstado(!inmueble.isEstado());
-        ApiClient.getApi().actualizarInmueble(inmueble);
-        inmuebleMutable.setValue(inmueble);
-    }
+//    public void CambioEstado(Inmueble inmueble){
+//        inmueble.setEstado(!inmueble.isEstado());
+//        ApiClient.getApi().actualizarInmueble(inmueble);
+//        inmuebleMutable.setValue(inmueble);
+//    }
 
-    public void ConsultarContratoVigente(Inmueble inmueble){
-        Contrato c = ApiClient.getApi().obtenerContratoVigente(inmueble);
-        if (c == null)
-            contratoVigenteMutable.setValue(false);
-        else
-            contratoVigenteMutable.setValue(true);
-    }
+//    public void ConsultarContratoVigente(Inmueble inmueble){
+//        Contrato c = ApiClient.getApi().obtenerContratoVigente(inmueble);S
+//        if (c == null)
+//            contratoVigenteMutable.setValue(false);
+//        else
+//            contratoVigenteMutable.setValue(true);
+//    }
 }

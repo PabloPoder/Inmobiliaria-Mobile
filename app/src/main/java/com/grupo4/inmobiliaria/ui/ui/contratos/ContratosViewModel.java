@@ -1,19 +1,37 @@
 package com.grupo4.inmobiliaria.ui.ui.contratos;
 
+import android.app.Application;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.grupo4.inmobiliaria.modelo.Contrato;
 import com.grupo4.inmobiliaria.modelo.Inmueble;
 import com.grupo4.inmobiliaria.request.ApiClient;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ContratosViewModel extends ViewModel {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+public class ContratosViewModel extends AndroidViewModel {
 
     public MutableLiveData<ArrayList<Inmueble>> inmueblesMutable;
+    private Context context;
+
+    public ContratosViewModel (@NonNull Application application) {
+        super(application);
+        context = application.getApplicationContext();
+    }
 
     public LiveData<ArrayList<Inmueble>> getInmueblesMutable(){
         if (inmueblesMutable == null){
@@ -22,10 +40,27 @@ public class ContratosViewModel extends ViewModel {
         return inmueblesMutable;
     }
 
-    public void LeerInmueblesAlquilados(){
-        ApiClient api = ApiClient.getApi();
-        ArrayList<Inmueble> inmuebles = api.obtenerPropiedadesAlquiladas();
+    public void LeerInmueblesAlquilados() {
+        Call<List<Contrato>> respuestaToken = ApiClient.getMyApiClient().ContratosVigentes(ApiClient.getToken(context));
+        respuestaToken.enqueue(new Callback<List<Contrato>>() {
+            @Override
+            public void onResponse (Call<List<Contrato>> call, Response<List<Contrato>> response) {
+                if (response.isSuccessful()) {
+                    ArrayList<Inmueble> inmuebles = new ArrayList<>();
+                    for (Contrato c : response.body()) {
+                        inmuebles.add(c.getInmueble());
+                    }
+                    inmueblesMutable.postValue(inmuebles);
+                }
+            }
 
-        inmueblesMutable.setValue(inmuebles);
+            @Override
+            public void onFailure (Call<List<Contrato>> call, Throwable t) {
+                Toast.makeText(context, "Error al cargar los inmuebles", Toast.LENGTH_LONG).show();
+                Log.d("salida", t.getMessage());
+            }
+        });
     }
 }
+
+

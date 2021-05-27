@@ -15,7 +15,7 @@ import com.grupo4.inmobiliaria.R;
 import com.grupo4.inmobiliaria.modelo.Contrato;
 
 public class TabContratoFragment extends Fragment {
-    private TextView tvFechaInicio, tvFechaFin, tvInquilino, tvInmueble, tvMonto, tvContratoId;
+    private TextView tvFechaDesde, tvFechaHasta, tvInquilino, tvInmueble, tvMonto, tvContratoId;
     private Button btInmuebleContrato;
     private Contrato contrato;
 
@@ -34,20 +34,20 @@ public class TabContratoFragment extends Fragment {
     }
 
     private void inicializarVista(View root){
-        tvFechaInicio = root.findViewById(R.id.tvFechaInicio);
-        tvFechaFin = root.findViewById(R.id.tvFechaFin);
+        tvFechaDesde = root.findViewById(R.id.tvFechaDesde);
+        tvFechaHasta = root.findViewById(R.id.tvFechaHasta);
         tvMonto = root.findViewById(R.id.tvMontoAlquiler);
         tvInquilino = root.findViewById(R.id.tvInquilino);
         tvInmueble = root.findViewById(R.id.tvInmueble);
         tvContratoId = root.findViewById(R.id.tvContratoId);
         btInmuebleContrato = root.findViewById(R.id.btInmuebleContrato);
 
-        tvFechaInicio.setText("Fecha de inicio: "+contrato.getFechaInicio());
-        tvFechaFin.setText("Fecha de fin: "+contrato.getFechaFin());
-        tvMonto.setText("Precio por mes: $"+contrato.getMontoAlquiler());
+        tvFechaDesde.setText("Fecha de inicio: "+contrato.getFechaDesde());
+        tvFechaHasta.setText("Fecha de fin: "+contrato.getFechaHasta());
+        tvMonto.setText("Precio por mes: $"+contrato.getInmueble().getPrecio());
         tvInquilino.setText("Inquilino: "+contrato.getInquilino().getNombre() + " "+ contrato.getInquilino().getApellido());
         tvInmueble.setText("Inmueble: "+contrato.getInmueble().getDireccion());
-        tvContratoId.setText("Detalles del contrato #"+contrato.getIdContrato());
+        tvContratoId.setText("Detalles del contrato #"+contrato.getId());
         btInmuebleContrato.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

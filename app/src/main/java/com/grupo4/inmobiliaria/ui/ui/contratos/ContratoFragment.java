@@ -46,7 +46,7 @@ public class ContratoFragment extends Fragment {
             @Override
             public void onChanged(Contrato c) {
                 contrato = c;
-                contratoViewModel.LeerPagosContrato(c);
+//                contratoViewModel.LeerPagosContrato(c);
             }
         });
         contratoViewModel.getPagosMutable().observe(getViewLifecycleOwner(), new Observer<List<Pago>>() {

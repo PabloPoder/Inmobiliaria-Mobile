@@ -74,8 +74,8 @@ public class EditarPerfilViewModel extends AndroidViewModel {
         }else if(p.getTelefono().length() > 15 || p.getTelefono().length() < 9){
             errorMutable.setValue("El número de teléfono ingresado no es válido (9-15 dígitos)");
         }else{
-            ApiClient api = ApiClient.getApi();
-            api.actualizarPerfil(p);
+//            ApiClient api = ApiClient.getApi();
+//            api.actualizarPerfil(p);
             errorMutable.setValue("EXITO");
         }
     }

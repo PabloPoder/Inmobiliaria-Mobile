@@ -56,7 +56,6 @@ public class InmueblesViewModel extends AndroidViewModel {
             @Override
             public void onFailure (Call<ArrayList<Inmueble>> call, Throwable t) {
                 Toast.makeText(context, "Error al cargar los inmuebles", Toast.LENGTH_LONG).show();
-
             }
         });
     }

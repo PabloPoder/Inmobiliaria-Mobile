@@ -61,12 +61,12 @@ public class InmuebleFragment extends Fragment {
                 swEstado.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (inmueble != null)
-                            inmuebleViewModel.CambioEstado(inmueble);
+//                        if (inmueble != null)
+//                            inmuebleViewModel.CambioEstado(inmueble);
                     }
                 });
 
-                inmuebleViewModel.ConsultarContratoVigente(inmueble);
+//                inmuebleViewModel.ConsultarContratoVigente(inmueble);
             }
         });
 

@@ -62,6 +62,7 @@ public class ListaInmueblesAdapter extends ArrayAdapter<Inmueble> {
             public void onClick(View v) {
                 Bundle b = new Bundle();
                 b.putSerializable("inmueble", inmueble);
+
                 Navigation.findNavController((Activity)context, R.id.nav_host_fragment).navigate(vistaDetallesOnClick, b);
             }
         });
