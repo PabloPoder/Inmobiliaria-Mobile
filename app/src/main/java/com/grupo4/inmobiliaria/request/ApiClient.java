@@ -16,11 +16,13 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 
@@ -32,73 +34,6 @@ public class ApiClient {
     private ArrayList<Pago> pagos=new ArrayList<>();
     private static Propietario usuarioActual = null;
     private static ApiClient api=null;
-
-//    private ApiClient(){
-//        //Nos conectamos a nuestra "Base de Datos"
-//        cargaDatos();
-//    }
-    //Método para crear una instancia de ApiClient
-//    public static ApiClient getApi(){
-//        if (api==null){
-//            api=new ApiClient();
-//        }
-//        return api;
-//
-//    }
-//
-//
-//
-////Dado un inmueble retorna el contrato activo de dicho inmueble
-//
-//    public Contrato obtenerContratoVigente(Inmueble inmueble){
-//
-//        for(Contrato contrato:contratos){
-//            if(contrato.getInmueble().equals(inmueble)){
-//                return contrato;
-//            }
-//        }
-//        return null;
-//    }
-//
-//    //Dado un inmueble, retorna el inquilino del ultimo contrato activo de ese inmueble.
-//    public Inquilino obtenerInquilino(Inmueble inmueble){
-//        for(Contrato contrato:contratos){
-//            if(contrato.getInmueble().equals(inmueble)){
-//                return contrato.getInquilino();
-//            }
-//        }
-//        return null;
-//    }
-//    //Dado un Contrato, retorna los pagos de dicho contrato
-//    public ArrayList<Pago> obtenerPagos(Contrato contratoVer){
-//        ArrayList<Pago> temp=new ArrayList<>();
-//        for(Contrato contrato:contratos){
-//            if(contrato.equals(contratoVer)){
-//                for(Pago pago:pagos){
-//                    if(pago.getContrato().equals(contrato)){
-//                        temp.add(pago);
-//                    }
-//                }
-//            }
-//            break;
-//        }
-//        return temp;
-//    }
-//    //Actualizar Perfil
-//    public void actualizarPerfil(Propietario propietario){
-//        int posición=propietarios.indexOf(propietario);
-//        if(posición!=-1){
-//            propietarios.set(posición,propietario);
-//        }
-//    }
-//
-//    //ActualizarInmueble
-//    public void actualizarInmueble(Inmueble inmueble){
-//        int posicion=inmuebles.indexOf(inmueble);
-//        if(posicion!=-1){
-//            inmuebles.set(posicion,inmueble);
-//        }
-//    }
 
     public static String getToken(Context context){
 
@@ -136,8 +71,8 @@ public class ApiClient {
         Call<Propietario> PropietarioActual(@Header("Authorization") String token);
 
         // @FormUrlEnconded
-        @GET("Inmuebles")
-        Call<ArrayList<Inmueble>> Inmuebles (@Header("Authorization") String token);
+        @GET("Inmuebles/")
+        Call<List<Inmueble>> Inmuebles (@Header("Authorization") String token);
 
         // @FormUrlEnconded
         @GET("Contratos/{id}")
@@ -145,6 +80,11 @@ public class ApiClient {
 
         @GET("Contratos/ContratosVigentes")
         Call<List<Contrato>> ContratosVigentes (@Header("Authorization") String token);
+
+        @FormUrlEncoded
+        @PUT("Propietarios")
+        Call<Propietario> EditarPerfil (@Path("id") int id, @Body Propietario propietario, @Header("Authorization") String token);
+
     }
 
 

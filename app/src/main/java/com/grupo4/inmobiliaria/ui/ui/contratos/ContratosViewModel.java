@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 public class ContratosViewModel extends AndroidViewModel {
 
-    public MutableLiveData<ArrayList<Inmueble>> inmueblesMutable;
+    public MutableLiveData<List<Contrato>> inmueblesMutable;
     private Context context;
 
     public ContratosViewModel (@NonNull Application application) {
@@ -33,7 +33,7 @@ public class ContratosViewModel extends AndroidViewModel {
         context = application.getApplicationContext();
     }
 
-    public LiveData<ArrayList<Inmueble>> getInmueblesMutable(){
+    public LiveData<List<Contrato>> getInmueblesMutable(){
         if (inmueblesMutable == null){
             inmueblesMutable = new MutableLiveData<>();
         }
@@ -46,11 +46,7 @@ public class ContratosViewModel extends AndroidViewModel {
             @Override
             public void onResponse (Call<List<Contrato>> call, Response<List<Contrato>> response) {
                 if (response.isSuccessful()) {
-                    ArrayList<Inmueble> inmuebles = new ArrayList<>();
-                    for (Contrato c : response.body()) {
-                        inmuebles.add(c.getInmueble());
-                    }
-                    inmueblesMutable.postValue(inmuebles);
+                    inmueblesMutable.postValue(response.body());
                 }
             }
 

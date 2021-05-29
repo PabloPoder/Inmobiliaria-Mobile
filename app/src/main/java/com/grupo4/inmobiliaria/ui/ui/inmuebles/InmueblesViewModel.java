@@ -24,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class InmueblesViewModel extends AndroidViewModel {
-    public MutableLiveData<ArrayList<Inmueble>> inmueblesMutable;
+    public MutableLiveData<List<Inmueble>> inmueblesMutable;
     private Context context;
 
     public InmueblesViewModel (@NonNull Application application) {
@@ -32,7 +32,7 @@ public class InmueblesViewModel extends AndroidViewModel {
         context = application.getApplicationContext();
     }
 
-    public LiveData<ArrayList<Inmueble>> getInmueblesMutable(){
+    public LiveData<List<Inmueble>> getInmueblesMutable(){
         if (inmueblesMutable == null){
             inmueblesMutable = new MutableLiveData<>();
         }
@@ -43,10 +43,10 @@ public class InmueblesViewModel extends AndroidViewModel {
 
         String token = ApiClient.getToken(context);
 
-        Call<ArrayList<Inmueble>> inmuebles = ApiClient.getMyApiClient().Inmuebles(token);
-        inmuebles.enqueue(new Callback<ArrayList<Inmueble>>() {
+        Call<List<Inmueble>> inmuebles = ApiClient.getMyApiClient().Inmuebles(token);
+        inmuebles.enqueue(new Callback<List<Inmueble>>() {
             @Override
-            public void onResponse (Call<ArrayList<Inmueble>> call, Response<ArrayList<Inmueble>> response) {
+            public void onResponse (Call<List<Inmueble>> call, Response<List<Inmueble>> response) {
                 if(response.isSuccessful())
                     inmueblesMutable.postValue(response.body());
                 else
@@ -54,7 +54,7 @@ public class InmueblesViewModel extends AndroidViewModel {
             }
 
             @Override
-            public void onFailure (Call<ArrayList<Inmueble>> call, Throwable t) {
+            public void onFailure (Call<List<Inmueble>> call, Throwable t) {
                 Toast.makeText(context, "Error al cargar los inmuebles", Toast.LENGTH_LONG).show();
             }
         });

@@ -32,7 +32,7 @@ public class InmuebleViewModel extends ViewModel {
     }
 
     public void LeerInmueble(Bundle bundle){
-        Inmueble inmueble = (Inmueble)bundle.getSerializable("inmueble");
+        Inmueble inmueble = (Inmueble)bundle.getSerializable("Inmueble");
         inmuebleMutable.setValue(inmueble);
     }
 

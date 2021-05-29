@@ -19,6 +19,7 @@ import com.grupo4.inmobiliaria.modelo.Pago;
 import com.grupo4.inmobiliaria.ui.ui.contratos.ListaPagosAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class InmueblesFragment extends Fragment {
@@ -34,15 +35,17 @@ public class InmueblesFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_inmuebles, container, false);
 
         InicializarVista(root);
-        inmueblesViewModel.getInmueblesMutable().observe(getViewLifecycleOwner(), new Observer<ArrayList<Inmueble>>() {
+        inmueblesViewModel.getInmueblesMutable().observe(getViewLifecycleOwner(), new Observer<List<Inmueble>>() {
             @Override
-            public void onChanged(ArrayList<Inmueble> inmuebles) {
+            public void onChanged(List<Inmueble> inmuebles) {
                 if (inmuebles.isEmpty()){
                     tvNoInmuebles.setVisibility(View.VISIBLE);
                     tvNoInmuebles.setText("No se encontró ningún inmueble registrado.");
                 } else {
                     tvNoInmuebles.setVisibility(View.INVISIBLE);
-                    ArrayAdapter<Inmueble> adapter = new ListaInmueblesAdapter(getContext(), R.layout.list_item_inmueble, inmuebles, getLayoutInflater(), R.id.nav_inmueble);
+                    ArrayAdapter adapter = new ListaInmueblesAdapter(getContext(), R.layout.list_item_inmueble,
+                            (List)inmuebles, getLayoutInflater(), R.id.nav_inmueble);
+
                     lvInmuebles.setAdapter(adapter);
                 }
 

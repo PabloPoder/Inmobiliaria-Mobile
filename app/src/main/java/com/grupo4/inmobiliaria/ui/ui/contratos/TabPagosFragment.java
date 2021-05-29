@@ -32,14 +32,14 @@ public class TabPagosFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_tab_pagos, container, false);
         inicializarVista(root);
 
-        if (pagos.isEmpty()){
-            tvNoPagos.setVisibility(View.VISIBLE);
-            tvNoPagos.setText("No se realizaron pagos en este contrato.");
-        } else {
-            tvNoPagos.setVisibility(View.INVISIBLE);
-            ArrayAdapter<Pago> adapter = new ListaPagosAdapter(getContext(), R.layout.list_item_pago, pagos, getLayoutInflater());
-            lvPagos.setAdapter(adapter);
-        }
+//        if (pagos != null && pagos.isEmpty()){
+//            tvNoPagos.setVisibility(View.VISIBLE);
+//            tvNoPagos.setText("No se realizaron pagos en este contrato.");
+//        } else {
+//            tvNoPagos.setVisibility(View.INVISIBLE);
+//            ArrayAdapter<Pago> adapter = new ListaPagosAdapter(getContext(), R.layout.list_item_pago, pagos, getLayoutInflater());
+//            lvPagos.setAdapter(adapter);
+//        }
 
         return root;
     }
