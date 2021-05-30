@@ -4,59 +4,59 @@ import java.io.Serializable;
 
 public class Pago implements Serializable {
 
-    private int idPago;
-    private int numero;
+    private int id;
     private Contrato contrato;
-    private double importe;
-    private String fechaDePago;
+    private double precio;
+    private String fechaPago;
+    private boolean estado;
 
     public Pago() {}
 
-    public Pago(int idPago, int numero, Contrato contrato, double importe, String fechaDePago) {
-        this.idPago = idPago;
-        this.numero = numero;
+    public Pago (int id, Contrato contrato, double precio, String fechaPago, boolean estado) {
+        this.id = id;
         this.contrato = contrato;
-        this.importe = importe;
-        this.fechaDePago = fechaDePago;
+        this.precio = precio;
+        this.fechaPago = fechaPago;
+        this.estado = estado;
     }
 
-    public int getIdPago() {
-        return idPago;
+    public int getId () {
+        return id;
     }
 
-    public void setIdPago(int idPago) {
-        this.idPago = idPago;
+    public void setId (int id) {
+        this.id = id;
     }
 
-    public int getNumero() {
-        return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
-
-    public Contrato getContrato() {
+    public Contrato getContrato () {
         return contrato;
     }
 
-    public void setContrato(Contrato contrato) {
+    public void setContrato (Contrato contrato) {
         this.contrato = contrato;
     }
 
-    public double getImporte() {
-        return importe;
+    public double getPrecio () {
+        return precio;
     }
 
-    public void setImporte(double importe) {
-        this.importe = importe;
+    public void setPrecio (double precio) {
+        this.precio = precio;
     }
 
-    public String getFechaDePago() {
-        return fechaDePago;
+    public String getFechaPago () {
+        return fechaPago;
     }
 
-    public void setFechaDePago(String fechaDePago) {
-        this.fechaDePago = fechaDePago;
+    public void setFechaPago (String fechaPago) {
+        this.fechaPago = fechaPago;
+    }
+
+    public boolean getEstado () {
+        return estado;
+    }
+
+    public void setEstado (boolean estado) {
+        this.estado = estado;
     }
 }

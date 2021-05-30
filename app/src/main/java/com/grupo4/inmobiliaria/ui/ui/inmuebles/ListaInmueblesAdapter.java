@@ -71,11 +71,10 @@ public class ListaInmueblesAdapter extends ArrayAdapter {
             @Override
             public void onClick(View v) {
                 Bundle b = new Bundle();
-                if(contratos.get(position) instanceof Contrato){
+                if(contratos.get(position) instanceof Contrato)
                     b.putSerializable("Contrato", (Contrato)contratos.get(position));
-                }else{
-                    b.putSerializable("Inmueble", (Inmueble)contratos.get(position));
-                }
+                else
+                    b.putSerializable("inmueble", (Inmueble)contratos.get(position));
 
                 Navigation.findNavController((Activity)context, R.id.nav_host_fragment).navigate(vistaDetallesOnClick, b);
             }

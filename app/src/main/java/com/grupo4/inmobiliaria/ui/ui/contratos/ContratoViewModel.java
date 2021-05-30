@@ -51,9 +51,31 @@ public class ContratoViewModel extends AndroidViewModel {
 
     public void LeerContrato(Bundle bundle){
         Contrato contrato = (Contrato)bundle.getSerializable("Contrato");
-
-        Log.d("Salida", contrato.getId() + "");
         contratoMutable.setValue(contrato);
     }
 
+    public void LeerPagosContrato(Contrato contrato){
+
+        String token = ApiClient.getToken(context);
+
+        Call<List<Pago>> pagos = ApiClient.getMyApiClient().Pagos(contrato.getId(), token);
+        pagos.enqueue(new Callback<List<Pago>>() {
+            @Override
+            public void onResponse (Call<List<Pago>> call, Response<List<Pago>> response) {
+                if(response.isSuccessful())
+                    pagosMutable.postValue(response.body());
+                else
+                    Toast.makeText(context, "Error al cargar los pagos", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onFailure (Call<List<Pago>> call, Throwable t) {
+                Toast.makeText(context, "Error al cargar los pagos", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
 }
+
+

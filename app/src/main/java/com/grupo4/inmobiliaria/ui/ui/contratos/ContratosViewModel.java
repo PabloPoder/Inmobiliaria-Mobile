@@ -45,15 +45,12 @@ public class ContratosViewModel extends AndroidViewModel {
         respuestaToken.enqueue(new Callback<List<Contrato>>() {
             @Override
             public void onResponse (Call<List<Contrato>> call, Response<List<Contrato>> response) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful())
                     inmueblesMutable.postValue(response.body());
-                }
             }
-
             @Override
             public void onFailure (Call<List<Contrato>> call, Throwable t) {
                 Toast.makeText(context, "Error al cargar los inmuebles", Toast.LENGTH_LONG).show();
-                Log.d("salida", t.getMessage());
             }
         });
     }

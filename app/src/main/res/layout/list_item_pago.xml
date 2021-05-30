@@ -35,6 +35,7 @@
         android:layout_marginStart="6dp"
         android:layout_marginTop="10dp"
         android:text="Fecha"
+        app:layout_constraintEnd_toStartOf="@+id/tvPagoImporte"
         app:layout_constraintStart_toEndOf="@+id/tvPagoId"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,13 +49,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_payments_24" />
 
-    <TextView
-        android:id="@+id/tvPagoNumero"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="6dp"
-        android:text="Nro de pago"
-        app:layout_constraintEnd_toStartOf="@+id/tvPagoImporte"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
