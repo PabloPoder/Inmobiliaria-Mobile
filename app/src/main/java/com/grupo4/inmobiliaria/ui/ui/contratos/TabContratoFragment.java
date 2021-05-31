@@ -14,6 +14,9 @@ import android.widget.TextView;
 import com.grupo4.inmobiliaria.R;
 import com.grupo4.inmobiliaria.modelo.Contrato;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class TabContratoFragment extends Fragment {
     private TextView tvFechaDesde, tvFechaHasta, tvInquilino, tvInmueble, tvMonto, tvContratoId;
     private Button btInmuebleContrato;
@@ -42,8 +45,14 @@ public class TabContratoFragment extends Fragment {
         tvContratoId = root.findViewById(R.id.tvContratoId);
         btInmuebleContrato = root.findViewById(R.id.btInmuebleContrato);
 
-        tvFechaDesde.setText("Fecha de inicio: "+contrato.getFechaDesde());
-        tvFechaHasta.setText("Fecha de fin: "+contrato.getFechaHasta());
+        // Formateo de fechas
+        LocalDateTime fi = LocalDateTime.parse(contrato.getFechaDesde());
+        LocalDate fff = fi.toLocalDate();
+        tvFechaDesde.setText("Fecha de inicio: " + fff.toString());
+        LocalDateTime fc = LocalDateTime.parse(contrato.getFechaHasta());
+        LocalDate hhh = fc.toLocalDate();
+        tvFechaHasta.setText("Fecha de fin: " + hhh.toString());
+
         tvMonto.setText("Precio por mes: $"+contrato.getInmueble().getPrecio());
         tvInquilino.setText("Inquilino: "+contrato.getInquilino().getNombre() + " "+ contrato.getInquilino().getApellido());
         tvInmueble.setText("Inmueble: "+contrato.getInmueble().getDireccion());

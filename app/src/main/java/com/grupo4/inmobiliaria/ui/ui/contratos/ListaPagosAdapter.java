@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import com.grupo4.inmobiliaria.R;
 import com.grupo4.inmobiliaria.modelo.Pago;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ListaPagosAdapter extends ArrayAdapter<Pago> {
@@ -38,7 +40,11 @@ public class ListaPagosAdapter extends ArrayAdapter<Pago> {
         TextView tvPagoImporte = convertView.findViewById(R.id.tvPagoImporte);
 
         tvPagoId.setText("#" + pago.getId());
-        tvPagoFecha.setText(pago.getFechaPago());
+
+        LocalDateTime fc = LocalDateTime.parse(pago.getFechaPago());
+        LocalDate hhh = fc.toLocalDate();
+        tvPagoFecha.setText("Fecha de pago: " + hhh.toString());
+
         tvPagoImporte.setText("$" + pago.getPrecio());
 
         return convertView;

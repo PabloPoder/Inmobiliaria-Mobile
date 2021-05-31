@@ -81,8 +81,7 @@ public class ApiClient {
         @GET("Contratos/ContratosVigentes")
         Call<List<Contrato>> ContratosVigentes (@Header("Authorization") String token);
 
-        @FormUrlEncoded
-        @PUT("Propietarios")
+        @PUT("Propietarios/EditarUsuario/{id}")
         Call<Propietario> EditarPerfil (@Path("id") int id, @Body Propietario propietario, @Header("Authorization") String token);
 
         @GET("Pagos/{id}")
