@@ -79,7 +79,7 @@ public class EditarPerfilFragment extends Fragment {
                 etEditarDniUsuario.setText(String.valueOf(propietario.getDni()));
                 etEditarEmailUsuario.setText((propietario.getEmail()));
                 etEditarTelefonoUsuario.setText(propietario.getTelefono());
-                etEditarClave.setText(propietario.getClave());
+//                etEditarClave.setText(propietario.getClave());
             }
         });
         editarPerfilViewModel.ObtenerPropietario();

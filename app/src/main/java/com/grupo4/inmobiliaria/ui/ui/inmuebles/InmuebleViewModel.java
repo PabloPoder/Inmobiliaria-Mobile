@@ -53,15 +53,30 @@ public class InmuebleViewModel extends AndroidViewModel {
         inmuebleMutable.setValue(inmueble);
     }
 
-//    public void CambioEstado(Inmueble inmueble){
-//        inmueble.setEstado(!inmueble.isEstado());
-//        ApiClient.getApi().actualizarInmueble(inmueble);
-//        inmuebleMutable.setValue(inmueble);
-//    }
+    public void CambioEstado(Inmueble inmueble)
+    {
+        inmueble.setEstado(!inmueble.isEstado());
+        String token = ApiClient.getToken(context);
 
-    public void ConsultarContratoVigente(Inmueble inmueble){
+        Call<Inmueble> i = ApiClient.getMyApiClient().EditarInmueble(inmueble.getId(), inmueble, token);
+        i.enqueue(new Callback<Inmueble>() {
+            @Override
+            public void onResponse (Call<Inmueble> call, Response<Inmueble> response) {
+                if(response.isSuccessful()) {
+                    inmuebleMutable.postValue(response.body());
+                    Toast.makeText(context, "Edición exitosa", Toast.LENGTH_LONG).show();
+                }else
+                    Toast.makeText(context, "Error al editar inmueble", Toast.LENGTH_LONG).show();
+            }
+            @Override
+            public void onFailure (Call<Inmueble> call, Throwable t) {
+                Toast.makeText(context, "Error al editar inmueble", Toast.LENGTH_LONG).show();
+            }
+        });
+    }
 
-
+    public void ConsultarContratoVigente(Inmueble inmueble)
+    {
         String token = ApiClient.getToken(context);
 
         Call<Contrato> contrato = ApiClient.getMyApiClient().ContratoVigentePorInmueble(inmueble.getId(), token);

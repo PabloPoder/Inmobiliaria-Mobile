@@ -88,10 +88,10 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:imeOptions="actionDone"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword|textEmailAddress"
+        android:password="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:password="true"
         app:layout_constraintTop_toBottomOf="@+id/tvEditarClave" />
 
     <TextView

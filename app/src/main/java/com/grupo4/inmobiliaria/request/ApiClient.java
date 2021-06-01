@@ -84,6 +84,9 @@ public class ApiClient {
         @PUT("Propietarios/EditarUsuario/{id}")
         Call<Propietario> EditarPerfil (@Path("id") int id, @Body Propietario propietario, @Header("Authorization") String token);
 
+        @PUT("Inmuebles/EditarInmueble/{id}")
+        Call<Inmueble> EditarInmueble (@Path("id") int id, @Body Inmueble inmueble, @Header("Authorization") String token);
+
         @GET("Pagos/{id}")
         Call<List<Pago>> Pagos(@Path("id") int id, @Header("Authorization") String token);
 
