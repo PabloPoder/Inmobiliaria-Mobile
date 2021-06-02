@@ -87,10 +87,12 @@ public class InmuebleViewModel extends AndroidViewModel {
                     contratoVigenteMutable.postValue(response.body());
                 else
                     Toast.makeText(context, "Error al cargar los pagos", Toast.LENGTH_LONG).show();
+                    contratoVigenteMutable.setValue(null);
             }
             @Override
             public void onFailure (Call<Contrato> call, Throwable t) {
                 Toast.makeText(context, "Error al cargar los pagos", Toast.LENGTH_LONG).show();
+                contratoVigenteMutable.setValue(null);
             }
         });
     }
